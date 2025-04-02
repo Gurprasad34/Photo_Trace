@@ -4,7 +4,7 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 import Photo from '../models/Photo';
 
 // Initialize Google Gemini API
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY as string);
 
 // Function to convert image from URL to base64
 async function imageUrlToBase64(imageUrl: string) {

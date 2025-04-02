@@ -17,6 +17,7 @@
     "@google-cloud/aiplatform": "^4.1.0",
     "@google/generative-ai": "^0.24.0",
     "axios": "^1.8.4",
+    "dotenv": "^16.4.7",
     "express": "^4.19.2",
     "mongoose": "^8.5.3"
   },
