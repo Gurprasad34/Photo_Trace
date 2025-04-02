@@ -1,9 +1,9 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import fs from "fs";
+import fileUploader from 'models/uploader';
 
 
-
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+const genAI = new GoogleGenerativeAI("AIzaSyCG-BDxEUfYkZ7BV0DTZ1eVOmXTp7McD3g");
 
 // Converts local file information to base64
 function fileToGenerativePart(path, mimeType) {
@@ -18,7 +18,7 @@ function fileToGenerativePart(path, mimeType) {
 async function run() {
   const model = genAI.getGenerativeModel({ model: "gemini-1.5-pro" });
 console.log(genAI)
-  const prompt = "Write an advertising jingle showing how the product in the first image could solve the problems shown in the second two images.";
+  const prompt = "Provide an estimated guess for where this photograph was taken. Explain your reasoning";
 
   const imageParts = [
     fileToGenerativePart("./pictures/Camden_Yards.jpg", "image/jpeg"),
