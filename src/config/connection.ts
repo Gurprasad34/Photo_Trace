@@ -1,13 +1,22 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
+import dotenv from 'dotenv';
 
-const db = async () => {
-    try {
-        await mongoose.connect(process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/photosApp');
-        console.log("Database connected.");
-    } catch (error) {
-        console.error("Database connection error:", error);
-        throw new Error("Database connection failed.");
+// Load environment variables
+dotenv.config();
+
+const connectDB = async () => {
+  try {
+    const uri = process.env.MONGO_URI;
+    if (!uri) {
+      throw new Error("MONGO_URI is not defined in .env file");
     }
+
+    await mongoose.connect(uri);
+    console.log("MongoDB Connected");
+  } catch (error) {
+    console.error("Database connection failed:", error);
+    process.exit(1);
+  }
 };
 
-export default db;
+export default connectDB;

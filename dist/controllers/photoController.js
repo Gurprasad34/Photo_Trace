@@ -7,42 +7,27 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import express from 'express';
-import multer from 'multer';
-import { GoogleGenerativeAI } from '@google/generative-ai';
 import fs from 'fs';
-import dotenv from 'dotenv';
-// import connectDB from './config/connection.js';  // Import database connection
-import routes from './routes/index.js'; // Import routes from index file in the routes folder
-dotenv.config();
-// Initialize Express app
-const app = express();
-const PORT = process.env.PORT || 3001;
-// Middleware
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
-app.use(routes);
-// Initialize Google Generative AI
+import { GoogleGenerativeAI } from '@google/generative-ai';
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-// Multer configuration for file uploads
-const upload = multer({ dest: 'uploads/' });
-// Function to convert file to GenerativePart
-function fileToGenerativePart(path, mimeType) {
+function fileToGenerativePart(filePath, mimeType) {
     return {
         inlineData: {
-            data: Buffer.from(fs.readFileSync(path)).toString('base64'),
+            data: Buffer.from(fs.readFileSync(filePath)).toString('base64'),
             mimeType,
         },
     };
 }
-app.post('/api/analyze-image', upload.single('image'), (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+export const uploadPhoto = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        if (!req.file) {
+        // Ensure `req.file` is correctly inferred
+        const file = req.file;
+        if (!file) {
             return res.status(400).json({ error: 'No file uploaded' });
         }
         const model = genAI.getGenerativeModel({ model: 'gemini-1.5-pro' });
         const prompt = 'Where was this photo taken? Explain your reasoning.';
-        const imageParts = [fileToGenerativePart(req.file.path, req.file.mimetype)];
+        const imageParts = [fileToGenerativePart(file.path, file.mimetype)];
         const generatedContent = yield model.generateContent([prompt, ...imageParts]);
         const result = generatedContent.response.text();
         return res.json({ result });
@@ -51,11 +36,4 @@ app.post('/api/analyze-image', upload.single('image'), (req, res) => __awaiter(v
         console.error('Error analyzing image:', error);
         return res.status(500).json({ error: 'Error analyzing image' });
     }
-}));
-// Connect to the database and start the server
-(() => __awaiter(void 0, void 0, void 0, function* () {
-    // await connectDB();
-    app.listen(PORT, () => {
-        console.log(`API server running on port ${PORT}!`);
-    });
-}))();
+});
