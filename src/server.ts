@@ -1,6 +1,6 @@
 import express from 'express';
-import routes from './routes/index';  // Import routes from index file in the routes folder
-import connectDB from './config/connection';  // Import database connection
+import routes from './routes/index.js';  // Import routes from index file in the routes folder
+import connectDB from './config/connection.js';  // Import database connection
 
 
 await connectDB();
