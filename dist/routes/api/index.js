@@ -1,7 +1,8 @@
-import { Router } from 'express';
-import { userRoutes } from './user-routes.js';
-import { thoughtRoutes } from './thought-routes.js';
-const router = Router();
-router.use('/users', userRoutes);
-router.use('/thoughts', thoughtRoutes);
+import express from 'express';
+import { photoRoutes } from './photoRoutes.js';
+// import { userRoutes } from './userRoutes.js';
+const router = express.Router();
+// Use user and photo routes
+// router.use('/users', userRoutes);
+router.use('/photos', photoRoutes);
 export default router;
