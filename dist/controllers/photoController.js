@@ -59,3 +59,20 @@ export const uploadPhoto = async (req, res) => {
         res.status(500).json({ error: "Failed to process image with AI" });
     }
 };
+// Serve an image by its ID
+export const serveImage = async (req, res) => {
+    try {
+        const photo = await Photo.findById(req.params.id);
+        if (!photo) {
+            return res.status(404).json({ error: "Photo not found" });
+        }
+        if (!fs.existsSync(photo.imagePath)) {
+            return res.status(404).json({ error: "Image file not found" });
+        }
+        return res.sendFile(photo.imagePath, { root: '.' });
+    }
+    catch (err) {
+        console.error(err);
+        return res.status(500).json({ error: "Failed to serve image" });
+    }
+};
