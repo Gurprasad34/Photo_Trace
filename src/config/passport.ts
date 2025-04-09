@@ -3,10 +3,15 @@ import { Strategy as GoogleStrategy } from 'passport-google-oauth20';
 import User from '../models/User.js';
 import type { IUser } from '../models/User';
 
+// Determine the callback URL based on environment
+const callbackURL = process.env.NODE_ENV === 'production'
+  ? 'https://photo-trace.onrender.com/auth/google/callback'
+  : '/auth/google/callback';
+
 passport.use(new GoogleStrategy({
     clientID: process.env.GOOGLE_CLIENT_ID!,
     clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
-    callbackURL: "/auth/google/callback"
+    callbackURL
   },
   async (_accessToken, _refreshToken, profile, done) => {
     try {

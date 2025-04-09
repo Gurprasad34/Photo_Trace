@@ -10,17 +10,17 @@ const FRONTEND_URL = process.env.NODE_ENV === 'production'
 
 // Route to initiate Google OAuth
 router.get('/google',
-    (_req, _res, next) => {
-      console.log('Starting Google authentication flow...');
-      next();
-    },
-    passport.authenticate('google', { scope: ['profile', 'email'] })
-  );
+  (req, res, next) => {
+    console.log('Starting Google authentication flow...');
+    next();
+  },
+  passport.authenticate('google', { scope: ['profile', 'email'] })
+);
 
 // Google OAuth callback route
 router.get('/google/callback',
   passport.authenticate('google', { failureRedirect: '/' }),
-  (_req, res) => {
+  (req, res) => {
     // Successful authentication, redirect to the frontend
     res.redirect(FRONTEND_URL);
   }
