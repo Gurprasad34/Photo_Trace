@@ -1,17 +1,22 @@
-"use strict";
-// import mongoose, { Schema, Document } from 'mongoose';
-// interface IUser extends Document {
-//     username: string;
-//     email: string;
-// }
-// const userSchema = new Schema<IUser>({
-//     username: { type: String,
-//         required: true,
-//         unique: true, 
-//         trim: true,},
-//     email: { type: String,
-//         required: true,
-//         unique: true },
-// });
-// const User = mongoose.model<IUser>('User', userSchema);
-// export default User;
+import mongoose, { Schema } from 'mongoose';
+const userSchema = new Schema({
+    googleId: {
+        type: String,
+        required: true,
+        unique: true
+    },
+    email: {
+        type: String,
+        required: true,
+        unique: true
+    },
+    displayName: {
+        type: String,
+        required: true
+    },
+    profilePicture: {
+        type: String
+    }
+});
+const User = mongoose.model('User', userSchema);
+export default User;
