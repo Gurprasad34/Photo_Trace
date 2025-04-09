@@ -10,7 +10,7 @@ const FRONTEND_URL = process.env.NODE_ENV === 'production'
 
 // Route to initiate Google OAuth
 router.get('/google',
-  (req, res, next) => {
+  (_req, _res, next) => {
     console.log('Starting Google authentication flow...');
     next();
   },
@@ -20,7 +20,7 @@ router.get('/google',
 // Google OAuth callback route
 router.get('/google/callback',
   passport.authenticate('google', { failureRedirect: '/' }),
-  (req, res) => {
+  (_req, res) => {
     // Successful authentication, redirect to the frontend
     res.redirect(FRONTEND_URL);
   }
