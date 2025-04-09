@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import session from 'express-session';
 import passport from 'passport';
+import MongoStore from 'connect-mongo';
 import routes from './routes/index.js';  // Import routes from index file in the routes folder
 import authRoutes from './routes/auth.js';
 import connectDB from './config/connection.js';  // Import database connection
@@ -22,6 +23,10 @@ app.use(session({
   secret: process.env.JWT_SECRET as string,
   resave: false,
   saveUninitialized: false,
+  store: MongoStore.create({
+    mongoUrl: process.env.MONGODB_URI as string,
+    ttl: 24 * 60 * 60 // 24 hours
+  }),
   cookie: {
     secure: process.env.NODE_ENV === 'production',
     maxAge: 24 * 60 * 60 * 1000 // 24 hours
@@ -45,10 +50,8 @@ app.use(cors({
   allowedHeaders: ['Content-Type']
 }));
 
-
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-
 
 app.use(routes);
 app.use('/auth', authRoutes);
