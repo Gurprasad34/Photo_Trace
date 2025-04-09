@@ -1,21 +1,32 @@
-// import mongoose, { Schema, Document } from 'mongoose';
+import mongoose, { Schema, Document } from 'mongoose';
 
-// interface IUser extends Document {
-//     username: string;
-//     email: string;
-// }
+export interface IUser extends Document {
+    googleId: string;
+    email: string;
+    displayName: string;
+    profilePicture?: string;
+}
 
-// const userSchema = new Schema<IUser>({
-//     username: { type: String,
-//         required: true,
-//         unique: true, 
-//         trim: true,},
+const userSchema = new Schema<IUser>({
+    googleId: { 
+        type: String,
+        required: true,
+        unique: true 
+    },
+    email: { 
+        type: String,
+        required: true,
+        unique: true 
+    },
+    displayName: {
+        type: String,
+        required: true
+    },
+    profilePicture: {
+        type: String
+    }
+});
 
-//     email: { type: String,
-//         required: true,
-//         unique: true },
-// });
+const User = mongoose.model<IUser>('User', userSchema);
 
-// const User = mongoose.model<IUser>('User', userSchema);
-
-// export default User;
+export default User;
