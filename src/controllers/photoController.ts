@@ -33,16 +33,16 @@ export const uploadPhoto = async (req: Request, res: Response) => {
 
     let prompt;
 
-    // Thius is switch statement to set the prompt based on promptType
+    // This is switch statement to set the prompt based on promptType
     switch (promptType) {
         case "prompt2":
-            prompt = "Explain this image with humour";
+            prompt = "Use context clues from this image to guess when it was taken. Please be specific and respond with at least one specific month and year.";
             break;
         case "prompt3":
-            prompt = "Describe this image like its shakespeare";
+            prompt = "Give a detailed description of this image, and be a little humorous and creative.";
             break;
         default:
-            prompt = "Describe what you see in this image";  // Default prompt
+            prompt = "Use context clues from this image to guess where it was taken. Please be specific and respond with at least one specific location.";  // Default prompt
             break;
     }
 
