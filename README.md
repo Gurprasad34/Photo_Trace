@@ -1,61 +1,47 @@
-# PhotoTrace
+# 📸 PhotoTrace — Backend
 
-## Overview
-PhotoTrace is an advanced photo analysis app powered by the Google Gemini Flash API. It allows users to upload images and receive insights based on AI-powered analysis. Whether it's object recognition, text extraction, scene understanding, or facial detection, PhotoTrace provides fast and accurate results.
+PhotoTrace is a simple MERN stack application that uses the Google Gemini API to analyze photos and provide intelligent feedback.
+This repo contains the client-side (frontend) code of the app.
 
-## Features
-- **AI-Powered Image Analysis**: Uses Google Gemini Flash API for high-speed and precise image interpretation.
-- **Scene Understanding**: Analyzes the environment, context, and elements in photos.
-- **Facial Recognition**: Identifies faces and provides relevant metadata.
-- **User-Friendly Interface**: Simple and intuitive design for seamless interaction.
+## 🚀 Features
+  •	Upload photos via a user-friendly interface
+  •	Send images to the backend for analysis
+  •	Display AI-generated insights using Google Gemini
+  •	Clean, modern UI built with React
 
-## Installation
-### Prerequisites
-- A valid API key for Google Gemini Flash API
-- Python 3.8+
-- Required dependencies listed in `requirements.txt`
+## 🛠️ Tech Stack
+  •	MongoDB
+  •	TypeScript
+  •	Google Gemini API
+  •	Axios (API Requests)
 
-### Setup
-1. Clone the repository:
-   ```sh
-   git clone https://github.com/yourusername/PhotoTrace.git
-   ```
-2. Navigate to the project directory:
-   ```sh
-   cd PhotoTrace
-   ```
-3. Install dependencies:
-   ```sh
-   pip install -r requirements.txt
-   ```
-4. Set up the API key:
-   - Create a `.env` file in the root directory and add:
-	 ```sh
-	 GOOGLE_GEMINI_API_KEY=your_api_key_here
-	 ```
+## 📦 Installation
 
-## Usage
-1. Run the application:
-   ```sh
-   python app.py
-   ```
-2. Upload an image through the interface.
-3. Select the analysis type (e.g., Object Recognition, OCR, etc.).
-4. View results provided by Google Gemini Flash API.
+### Clone the repo
+`git clone https://github.com/your-username/photo-trace-backend.git`
+`cd photo-trace-frontend`
 
-## API Integration
-PhotoTrace utilizes the Google Gemini Flash API to process images. API responses include:
-- Object labels
-- Text content
-- Scene descriptions
-- Facial attributes
+### Install dependencies
+`npm install`
 
-## Contributing
-We welcome contributions! Feel free to fork the repo and submit pull requests.
+### Start the dev server
+`npm run dev`
 
-## License
-This project is licensed under the MIT License.
+Make sure the backend server is running and accessible at the expected API endpoint.
 
-## Contact
-For questions or support, please reach out to Ben, Bryan, Gurprasad, or Justin.
+## 📁 Project Structure
 
+src/
+├── config/        # Mongoose configuration (e.g., database connection in 
+├── controllers/   # Logic and handlers for your routes (controller functions)
+├── models/        # Mongoose models and schemas
+├── routes/        # Express route definitions
+server.ts          # Main server entry point (sets up Express, middleware, etc.)
+
+
+### 🔗 Related Repos
+  •	PhotoTrace Frontend
+
+### 📄 License
+
+  •	MIT License
