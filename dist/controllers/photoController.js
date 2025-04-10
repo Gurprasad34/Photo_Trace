@@ -27,13 +27,13 @@ export const uploadPhoto = async (req, res) => {
     // Thius is switch statement to set the prompt based on promptType
     switch (promptType) {
         case "prompt2":
-            prompt = "Explain this image with humour";
+            prompt = "Where do you think this photo was taken? Explain your thinking by providing specific examples.";
             break;
         case "prompt3":
-            prompt = "Describe this image like its shakespeare";
+            prompt = "When / what time period do you think this image was taken? Explain your thinking by providing specific examples.";
             break;
         default:
-            prompt = "Describe what you see in this image"; // Default prompt
+            prompt = "Describe what you see in this image. Provide specific examples."; // Default prompt
             break;
     }
     try {
