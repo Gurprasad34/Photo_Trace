@@ -45,7 +45,7 @@ server.ts          # Main server entry point (sets up Express, middleware, etc.)
 
 ### 🔗 Related Repos
 
-  🔗 [PhotoTrace Backend](https://github.com/bryanesslinger/Photo_Trace_Client)
+  🔗 [PhotoTrace Frontend](https://github.com/bryanesslinger/Photo_Trace_Client)
   
 ### 📄 License
 
