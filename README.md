@@ -5,7 +5,7 @@ This repo contains the client-side (frontend) code of the app.
 
 ## 📌 Live Demo
 
-🔗 [View My Portfolio](https://photo-trace-client.onrender.com/)
+🔗 [PhotoTrace](https://photo-trace-client.onrender.com/)
 
 ## 🚀 Features
   •	Upload photos via a user-friendly interface
