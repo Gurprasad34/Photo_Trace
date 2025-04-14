@@ -3,6 +3,10 @@
 PhotoTrace is a simple MERN stack application that uses the Google Gemini API to analyze photos and provide intelligent feedback.
 This repo contains the client-side (frontend) code of the app.
 
+## 📌 Live Demo
+
+🔗 [View My Portfolio](https://photo-trace-client.onrender.com/)
+
 ## 🚀 Features
   •	Upload photos via a user-friendly interface
   •	Send images to the backend for analysis
