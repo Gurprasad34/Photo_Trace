@@ -60,8 +60,8 @@ export const uploadPhoto = async (req: Request, res: Response) => {
     // Prepare image for Gemini AI
     const imageParts = [fileToGenerativePart(imagePath, mimeType)];
 
-    // Generate AI content based on the selected prompt
-    const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
+        // Generate AI content based on the selected prompt
+        const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
     const generatedContent = await model.generateContent([
       prompt,
       ...imageParts,
